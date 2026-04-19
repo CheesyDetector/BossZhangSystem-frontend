@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slither 合约安全检测</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- 引入Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- 引入Font Awesome图标 -->
@@ -14,13 +17,16 @@
       theme: {
         extend: {
           colors: {
-            primary: '#0F172A', // 主色-深蓝（专业安全）
-            secondary: '#2563EB', // 辅助色-科技蓝
-            accent: '#10B981', // 强调色-安全绿
-            light: '#F8FAFC', // 浅色背景
+            primary: '#0F172A', 
+            secondary: '#2563EB', 
+            accent: '#10B981', 
+            light: '#F8FAFC', 
           },
           fontFamily: {
+            // 修改这里：指定 Inter 为默认字体
             sans: ['Inter', 'system-ui', 'sans-serif'],
+            // 新增这里：指定等宽字体用于技术数据展示
+            mono: ['"JetBrains Mono"', 'monospace'],
           },
         },
       }
@@ -115,8 +121,8 @@
           <i class="fa-solid fa-chevron-down text-[10px]"></i>
         </a>
         <div class="absolute left-0 top-full z-40 min-w-[220px] rounded-xl border border-gray-100 bg-white p-2 shadow-xl opacity-0 invisible pointer-events-none translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto group-hover:translate-y-0">
-          <a href="#" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary">漏洞知识库</a>
-          <a href="#" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary">集成工具集</a>
+          <a href="resource-vulnerability.html" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary">漏洞知识库</a>
+          <a href="resource-tool.html" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary">集成工具集</a>
           <a href="#" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary">论文库</a>
           <a href="#" class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-secondary">用户文档</a>
         </div>
@@ -164,25 +170,25 @@
   <div class="max-w-6xl mx-auto">
     
     <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
+      <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-4">
         检测工具库
       </h2>
-      <p class="text-gray-600 max-w-3xl mx-auto">
-        本工具库整合主流智能合约安全检测工具，涵盖工具基础信息、技术特性、检测范围与官方资源，为合约安全审计提供高效、权威的工具选型与使用参考
+      <p class="text-slate-500 w-full mx-auto text-sm leading-relaxed px-2">
+        本工具库整合主流智能合约安全检测工具，涵盖工具基础信息、技术特性、检测范围与官方资源，为合约安全审计提供高效、权威的工具选型与使用参考。
       </p>
-      <p id="load_tip" class="text-sm text-accent mt-2">正在加载Excel数据...</p>
+      
     </div>
 
     <div class="bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-gray-100 overflow-hidden">
       <div class="overflow-x-auto">
         <table class="w-full">
           <thead class="bg-gray-50 border-b border-gray-200">
-            <tr>
-              <th class="px-4 py-4 text-left text-sm font-semibold text-gray-700 w-16">序号</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">工具名称</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">技术类型</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">简要描述</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">版本号</th>
+            <tr >
+              <th class="px-4 py-4 text-center text-sm font-semibold text-gray-700 w-16">序号</th>
+              <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">工具名称</th>
+              <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">技术类型</th>
+              <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">简要描述</th>
+              <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700">版本号</th>
               <th class="px-6 py-4 text-center text-sm font-semibold text-gray-700 w-24">操作</th>
             </tr>
           </thead>
@@ -195,9 +201,13 @@
       </div>
     </div>
 
-    <div class="mt-12 text-center">
-      <p class="text-gray-500">工具信息有误？<a href="#" class="text-secondary font-medium hover:underline">反馈更新</a></p>
-    </div>
+    <div class="mt-12 text-center flex justify-center items-center gap-3 text-sm">
+  <p id="load_tip" class="text-slate-400 font-mono">正在同步数据...</p>
+  
+  <span class="text-gray-300">|</span> <p class="text-gray-500">
+    工具信息有误？<a href="#" class="text-secondary font-medium hover:underline">反馈更新</a>
+  </p>
+</div>
 
   </div>
 </section>
@@ -223,12 +233,16 @@ document.addEventListener('DOMContentLoaded', async function () {
       // 从第2行开始读取数据
       toolData = rows.slice(1).filter(row => row && row.length > 0);
       renderTable();
-      loadTip.textContent = '数据加载完成';
-      loadTip.className = 'text-sm text-accent mt-2';
+
+      // 修改这里：数据加载成功的样式
+    loadTip.textContent = '数据加载完成';
+    // 移除 mt-2（因为现在是并排），改为 text-accent (绿色) 或保持 text-slate-400
+    loadTip.className = 'text-accent font-medium';
     } catch (err) {
       tableBody.innerHTML = `<tr><td colspan="6" class="px-6 py-8 text-center text-red-500">${err.message}</td></tr>`;
-      loadTip.textContent = '加载失败';
-      loadTip.className = 'text-sm text-red-500 mt-2';
+      // 修改这里：加载失败的样式
+    loadTip.textContent = '数据同步失败';
+    loadTip.className = 'text-red-500 font-medium';
     }
   }
 
@@ -243,32 +257,39 @@ document.addEventListener('DOMContentLoaded', async function () {
       const desc         = row[10] || '-';
 
       html += `
-      <tr class="${isEven ? 'bg-gray-50/50' : ''} hover:bg-secondary/5 transition-colors">
-        <td class="px-4 py-4 text-sm text-gray-800">${index+1}</td>
-        <td class="px-6 py-4 text-sm font-medium text-gray-800">${name}</td>
-        <td class="px-6 py-4 text-sm text-gray-600">${techType}</td>
-        <td class="px-6 py-4 text-sm text-gray-600">${desc}</td>
-        <td class="px-6 py-4 text-sm text-gray-600">${version}</td>
-        <td class="px-6 py-4 text-center">
-          <!-- 3. 操作改成 详情 -->
-          <button onclick="toggleDetail(${index})" class="text-accent text-sm font-medium hover:text-secondary transition-colors">
-            详情 <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
-          </button>
-        </td>
-      </tr>
-      <tr id="detail_${index}" class="hidden">
-        <td colspan="6" class="px-6 py-6 bg-gray-50/80 border-t border-gray-100">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <!-- 4. 漏洞类型 和 检测对象 交换位置 -->
-            <div><span class="font-semibold">漏洞类型：</span>${row[7] || '-'}</div>
-            <div><span class="font-semibold">检测对象：</span>${row[5] || '-'}</div>
-            <div><span class="font-semibold">发布时间：</span>${row[2] || '-'}</div>
-            <div><span class="font-semibold">最后更新时间：</span>${row[3] || '-'}</div>
-            <div><span class="font-semibold">仓库链接：</span>${makeLink(row[8])}</div>
-            <div><span class="font-semibold">论文链接：</span>${makeLink(row[9])}</div>
-          </div>
-        </td>
-      </tr>`;
+<tr class="${isEven ? 'bg-gray-50/50' : ''} hover:bg-secondary/5 transition-colors">
+  <td class="px-4 py-4 text-sm text-gray-800 text-center">${index+1}</td>
+  
+  <td class="px-6 py-4 text-sm font-medium text-gray-800 text-center">${name}</td>
+  
+  <td class="px-6 py-4 text-sm text-gray-600 text-center">
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-secondary/10 text-secondary border border-secondary/20">
+      ${techType}
+    </span>
+  </td>
+  
+  <td class="px-6 py-4 text-sm text-gray-600 text-left pr-8">${desc}</td>
+  
+  <td class="px-6 py-4 text-sm text-gray-600 text-center font-mono">${version}</td>
+  
+  <td class="px-6 py-4 text-center">
+    <button onclick="toggleDetail(${index})" class="text-accent text-sm font-medium hover:text-secondary transition-colors">
+      详情 <i class="fa-solid fa-chevron-down ml-1 text-xs"></i>
+    </button>
+  </td>
+</tr>
+<tr id="detail_${index}" class="hidden">
+  <td colspan="6" class="px-6 py-6 bg-gray-50/80 border-t border-gray-100">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <div><span class="font-semibold">漏洞类型：</span>${row[7] || '-'}</div>
+      <div><span class="font-semibold">检测对象：</span>${row[5] || '-'}</div>
+      <div><span class="font-semibold">发布时间：</span>${row[2] || '-'}</div>
+      <div><span class="font-semibold">最后更新时间：</span>${row[3] || '-'}</div>
+      <div><span class="font-semibold">仓库链接：</span>${makeLink(row[8])}</div>
+      <div><span class="font-semibold">论文链接：</span>${makeLink(row[9])}</div>
+    </div>
+  </td>
+</tr>`;
     });
     tableBody.innerHTML = html || `<tr><td colspan="6" class="px-6 py-8 text-center">暂无数据</td></tr>`;
   }
